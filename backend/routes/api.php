@@ -30,6 +30,22 @@ Route::middleware('auth:sanctum')->group(function() {
         //vote down questions
         Route::put('votedown/{question}/question','voteDown');
     });
+    Route::controller(AnswerController::class)->group(function() {
+        //show answer
+        Route::get('answers/{answer}/show','show');
+        //store answer
+        Route::post('answer/{question}/store','store');
+        //updating answers
+        Route::put('update/{question}/{answer}/answer','update');
+        //deleting answers
+        Route::delete('delete/{question}/{answer}/answer','destroy');
+        //vote up answers
+        Route::put('voteup/{answer}/answer','voteUp');
+        //vote down answers
+        Route::put('votedown/{answer}/answer','voteDown');
+        //mark answer as the best
+        Route::put('mark/{answer}/best','markAsBest');
+    });
 });   
   
 
